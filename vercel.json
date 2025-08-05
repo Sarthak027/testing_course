@@ -1,0 +1,27 @@
+{
+  "rewrites": [
+    {
+      "source": "/34324",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/34324/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+}
