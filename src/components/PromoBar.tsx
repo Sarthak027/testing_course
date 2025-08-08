@@ -26,6 +26,8 @@ const PromoBar: React.FC = () => {
     // Listen for promo changes from admin panel
     const handlePromoChanged = (newPromo: PromoConfig) => {
       setPromo(newPromo);
+      // Force component re-render for immediate visibility
+      setIsVisible(newPromo.isActive);
     };
 
     storageEvents.on('promoChanged', handlePromoChanged);

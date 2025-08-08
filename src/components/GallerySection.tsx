@@ -26,6 +26,7 @@ const GallerySection: React.FC = () => {
     // Listen for gallery changes from admin panel
     const handleGalleryChanged = (newGallery: GalleryItem[]) => {
       setGallery(newGallery);
+      setIsLoading(false); // Ensure loading state is updated
     };
 
     storageEvents.on('galleryChanged', handleGalleryChanged);

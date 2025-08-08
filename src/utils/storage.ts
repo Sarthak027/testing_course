@@ -269,6 +269,32 @@ export const setupRealtimeSubscriptions = () => {
       }
     )
     .subscribe();
+
+  // Add immediate local event broadcasting for faster UI updates
+  const originalSaveCourses = storageUtils.saveCourses;
+  const originalSavePromo = storageUtils.savePromo;
+  const originalSaveGallery = storageUtils.saveGallery;
+
+  storageUtils.saveCourses = async (courses: Course[]) => {
+    // Immediately update UI
+    storageEvents.emit('coursesChanged', courses);
+    // Then save to database
+    return await originalSaveCourses(courses);
+  };
+
+  storageUtils.savePromo = async (promo: PromoConfig) => {
+    // Immediately update UI
+    storageEvents.emit('promoChanged', promo);
+    // Then save to database
+    return await originalSavePromo(promo);
+  };
+
+  storageUtils.saveGallery = async (gallery: GalleryItem[]) => {
+    // Immediately update UI
+    storageEvents.emit('galleryChanged', gallery);
+    // Then save to database
+    return await originalSaveGallery(gallery);
+  };
 };
 
 function getDefaultCourses(): Course[] {

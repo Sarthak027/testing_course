@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MessageCircle } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -27,26 +27,23 @@ const Footer: React.FC = () => {
             Master trading & investment skills and transform your financial future with our premium courses.
           </p>
           
-          <div className="flex justify-center space-x-4 mb-6">
+          <div className="flex justify-center mb-6">
             <motion.a
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               href={`https://t.me/${import.meta.env.VITE_TELEGRAM_USERNAME || 'jessecourseworld'}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-blue-600 p-3 rounded-full hover:bg-blue-700 transition-colors"
+              className="bg-blue-500 p-4 rounded-full hover:bg-blue-600 transition-colors shadow-lg hover:shadow-xl flex items-center justify-center"
+              title="Join our Telegram Channel"
             >
-              <MessageCircle size={20} />
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              href="mailto:contact@jessecourseworld.com"
-              className="bg-green-600 p-3 rounded-full hover:bg-green-700 transition-colors"
-            >
-              <Mail size={20} />
+              <MessageCircle size={24} />
             </motion.a>
           </div>
+          
+          <p className="text-gray-400 text-sm mb-4">
+            📱 Join our Telegram channel for course updates and support
+          </p>
         </div>
 
         <motion.div

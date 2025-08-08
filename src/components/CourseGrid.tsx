@@ -36,6 +36,25 @@ const CourseGrid: React.FC = () => {
     };
   }, [searchParams]);
 
+  // Additional effect to ensure immediate updates
+  useEffect(() => {
+    const handleImmediateUpdate = (newCourses: Course[]) => {
+      setCourses(newCourses);
+      // Force re-render by updating filtered courses
+      if (selectedCategory === 'All') {
+        setFilteredCourses(newCourses);
+      } else {
+        setFilteredCourses(newCourses.filter(course => course.category === selectedCategory));
+      }
+    };
+
+    storageEvents.on('coursesChanged', handleImmediateUpdate);
+
+    return () => {
+      storageEvents.off('coursesChanged', handleImmediateUpdate);
+    };
+  }, [selectedCategory]);
+
   useEffect(() => {
     if (selectedCategory === 'All') {
       setFilteredCourses(courses);

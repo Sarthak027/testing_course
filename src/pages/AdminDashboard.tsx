@@ -74,23 +74,30 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
       updatedCourses = [...courses, newCourse];
     }
     
+    // Immediately update local state for instant UI feedback
     setCourses(updatedCourses);
-    await storageUtils.saveCourses(updatedCourses);
     setEditingCourse(null);
     setIsAddingCourse(false);
+    
+    // Save to database in background
+    await storageUtils.saveCourses(updatedCourses);
   };
 
   const handleDeleteCourse = async (courseId: string) => {
     if (confirm('Are you sure you want to delete this course?')) {
       const updatedCourses = courses.filter(course => course.id !== courseId);
+      // Immediately update local state
       setCourses(updatedCourses);
+      // Save to database in background
       await storageUtils.saveCourses(updatedCourses);
     }
   };
 
   const handleSavePromo = async () => {
-    await storageUtils.savePromo(promo);
+    // Show immediate feedback
     alert('Promo settings saved successfully!');
+    // Save to database
+    await storageUtils.savePromo(promo);
   };
 
   const handleSaveGalleryItem = async (itemData: Partial<GalleryItem>) => {
@@ -114,16 +121,21 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
       updatedGallery = [...gallery, newItem];
     }
     
+    // Immediately update local state for instant UI feedback
     setGallery(updatedGallery);
-    await storageUtils.saveGallery(updatedGallery);
     setEditingGalleryItem(null);
     setIsAddingGalleryItem(false);
+    
+    // Save to database in background
+    await storageUtils.saveGallery(updatedGallery);
   };
 
   const handleDeleteGalleryItem = async (itemId: string) => {
     if (confirm('Are you sure you want to delete this gallery item?')) {
       const updatedGallery = gallery.filter(item => item.id !== itemId);
+      // Immediately update local state
       setGallery(updatedGallery);
+      // Save to database in background
       await storageUtils.saveGallery(updatedGallery);
     }
   };
