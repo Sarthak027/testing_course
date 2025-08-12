@@ -229,7 +229,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
                   <img
                     src={course.thumbnail}
                     alt={course.title}
-                    className="w-full h-32 object-cover"
+                    className="w-full h-32 object-contain bg-gray-50"
                   />
                   <div className="p-4">
                     <h3 className="font-bold text-gray-800 mb-2">{course.title}</h3>
@@ -330,7 +330,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
                   <img
                     src={item.image}
                     alt={item.description}
-                    className="w-full h-32 object-cover"
+                    className="w-full h-32 object-contain bg-gray-50"
                   />
                   <div className="p-4">
                     <p className="text-sm text-gray-600 mb-3 line-clamp-3">{item.description}</p>
@@ -479,6 +479,7 @@ const CourseFormModal: React.FC<CourseFormModalProps> = ({ course, onSave, onClo
                 required
               >
                 <option value="">Select Category</option>
+                <option value="Latest Course">Latest Course</option>
                 <option value="Forex Courses">Forex Courses</option>
                 <option value="Option Trading">Option Trading</option>
                 <option value="Swing Trading">Swing Trading</option>
@@ -555,7 +556,7 @@ const CourseFormModal: React.FC<CourseFormModalProps> = ({ course, onSave, onClo
                     <img
                       src={formData.thumbnail}
                       alt="Preview"
-                      className="w-full h-32 object-cover rounded-lg border"
+                      className="w-full h-auto max-h-48 object-contain rounded-lg border bg-gray-50"
                     />
                   </div>
                 )}
@@ -652,7 +653,7 @@ const GalleryFormModal: React.FC<GalleryFormModalProps> = ({ item, onSave, onClo
                     <img
                       src={formData.image}
                       alt="Preview"
-                      className="w-full h-48 object-cover rounded-lg border"
+                      className="w-full h-auto max-h-64 object-contain rounded-lg border bg-gray-50"
                     />
                   </div>
                 )}
