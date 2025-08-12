@@ -5,6 +5,13 @@ import { TrendingUp, DollarSign, Megaphone, Bitcoin, BarChart3, Users, BookOpen,
 
 const categories = [
   {
+    name: 'Latest Course',
+    icon: Target,
+    description: 'Our newest and most updated courses',
+    gradient: 'from-emerald-500 to-emerald-600',
+    hoverGradient: 'from-emerald-600 to-emerald-700'
+  },
+  {
     name: 'Forex Courses',
     icon: DollarSign,
     description: 'Master currency trading and market analysis',
